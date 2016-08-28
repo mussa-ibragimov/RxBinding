@@ -27,17 +27,20 @@ public class SlidingPaneLayoutPanelSlideEventOnSubscribe implements Observable.O
                 if (!subscriber.isUnsubscribed()) {
                     subscriber.onNext(SlidingPaneLayoutSlideEvent.create(slidingPaneLayout, Kind.CLOSED, panel));
                 }
-
             }
 
             @Override
             public void onPanelOpened(View panel) {
-
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onNext(SlidingPaneLayoutSlideEvent.create(slidingPaneLayout, Kind.OPENED, panel));
+                }
             }
 
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
-
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onNext(SlidingPaneLayoutSlideEvent.create(slidingPaneLayout, Kind.SLIDE, slideOffset, panel));
+                }
             }
         };
         slidingPaneLayout.setPanelSlideListener(listener);
