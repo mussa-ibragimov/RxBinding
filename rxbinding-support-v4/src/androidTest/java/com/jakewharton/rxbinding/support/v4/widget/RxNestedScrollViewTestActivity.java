@@ -14,6 +14,7 @@ public final class RxNestedScrollViewTestActivity extends Activity {
   FrameLayout emptyView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+
     super.onCreate(savedInstanceState);
     ScrollView scrollView = new ScrollView(this);
     nestedScrollView = new NestedScrollView(this);
